@@ -1,0 +1,39 @@
+.gallery-section {
+  padding: 100px 0;
+
+  .wrapper {
+    @include flex();
+    @include align($align: center);
+    @include direction($direction: column);
+
+    .para--grey {
+      width: 50%;
+      text-align: center;
+      line-height: 25px;
+      @include font($size: 14px);
+
+    }
+  }
+
+  &__slider-list {
+    width: 100%;
+    margin-top: 80px;
+    overflow-x: hidden;
+    @include flex();
+
+    li:not(:last-child) { margin-right: 2.5%; }
+  }
+
+  .slider--gallery {
+    margin-top: 50px;
+    .active { background-color: map-get($map: $colors, $key: primaryColor); }
+
+    li {
+      @include responsive-reverse(map-get($devices, tablet)) {
+        &:hover {
+          background-color: map-get($map: $colors, $key: primaryColor);
+        }
+      }
+    }
+  }
+}

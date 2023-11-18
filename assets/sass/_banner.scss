@@ -1,0 +1,64 @@
+.banner-section {
+  min-height: 732px;
+  background-color: map-get($map: $colors, $key: opacityColor);
+  @include position(relative);
+
+  &__fig {
+    width: 100%;
+    height: 100%;
+    @include position(absolute, $z-index: -1, $top: 0, $left: 0);
+  }
+
+  &__info {
+    color: map-get($map: $colors, $key: white);
+    @include flex();
+    @include align($align: center);
+    @include direction($direction: column);
+    @include position(absolute, $left: 50%, $top: 50%);
+    @include transform($property: translate(-50%, -90%));
+
+    .sub-head:last-child { margin-top: 10px; }
+
+    .sub-head { 
+      text-align: center;
+      @include font($size: 20px);
+    }
+    
+  }
+
+  &__sub-head {
+    margin-top: 15px;
+    @include flex();
+    @include align($align: center);
+    @include direction($direction: column);
+  }
+
+  &__heading {
+    text-align: center;
+    line-height: 70px;
+    @include font($size: 53px, $weight: 700);
+  }
+
+  .icon-gotonextsec {
+    width: 110px;
+    height: 70px;
+    @include position(absolute, $left: 50%, $top: 50%);
+    @include transform($property: translate(-50%, 280%));
+    
+    @include responsive-reverse(map-get($devices, tablet)) {
+      &:hover::before {
+        background-color: map-get($map: $colors, $key: white);
+        color: map-get($map: $colors, $key: btnBlue);
+      }
+    }
+  }
+
+  .icon-gotonextsec::before {
+    padding: 15px 42px;
+    background-color: map-get($map: $colors, $key: btnBlue);
+    color: map-get($map: $colors, $key: white);
+    @include font($size: 40px, $weight: 700);
+    @include transition(all, .3s, ease-in-out);
+  }
+
+}

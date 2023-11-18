@@ -1,0 +1,75 @@
+.header-section {
+  width: 100%;
+  padding: 16px 0;
+  text-align: center;
+  background-color:  map-get($map: $colors, $key: bgColor);
+  @include position(fixed, $z-index: 1);
+
+  .wrapper {
+    @include flex();
+    @include justify($justify: space-between);
+
+    @include responsive(map-get($devices, tablet)) {
+      width: 85%;
+    }
+  }
+
+  &__logo {
+
+    a {
+      color: map-get($map: $colors, $key: white);
+      text-transform: capitalize;
+      @include font($size: 20px, $weight: 700);
+    }
+  }
+
+  &__navbar {
+    @include flex();
+    @include shortFlex(56.5%);
+
+    @include responsive(map-get($devices, tablet)) {
+      display: none;
+    }
+  }
+
+  &__nav-list {
+    width: 94%;
+    @include flex();
+    @include justify($justify: space-between);
+
+    li:not(:last-child) { margin-right: 2%; }
+
+    a {
+      color: map-get($map: $colors, $key: lightdarkWhite);
+      white-space: nowrap;
+      @include font($size: 20px);
+      @include transition(all, .2s, ease-in-out);
+
+      @include responsive-reverse(map-get($devices, tablet)) {
+        &:hover { color: map-get($map: $colors, $key: white); }
+      }
+    }
+
+    .active a { color: map-get($map: $colors, $key: white); }
+  }
+
+  &__hamburger {
+    display: none;
+
+    .bar {
+      width: 18px;
+      height: 2px;
+      margin: 4px;
+      display: block;
+      background-color: #fff;
+      text-indent: -9999px;
+      @include transition(all 0.3s ease-out);
+    }
+
+    @include responsive(map-get($devices, tablet)) {
+      display: block;
+    }
+  }
+
+
+}

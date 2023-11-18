@@ -1,0 +1,118 @@
+.footer-section {
+  min-height: 914px;
+  padding: 60px 0 20px;
+  background-image: url('https://dummyimage.com/1366x861/3C4554/000');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .wrapper {
+    @include flex();
+    @include align($align: center);
+    @include direction($direction: column);
+
+    .para--white {
+      width: 75%;
+      text-align: center;
+      line-height: 35px;
+    }
+  }
+
+  &__contactus {
+    width: 82%;
+    margin-top: 90px;
+    @include flex();
+  }
+
+  &__form {
+    width: 50%;
+    margin-right: 3.2%;
+
+    .input-grp {
+      width: 100%;
+      margin-bottom: 20px;
+
+      input {
+        @extend %form-inputs;
+      }
+    }
+
+    .textaria-grp {
+      width: 100%;
+
+      textarea {
+        @extend %form-inputs;
+      }
+    }
+
+    .btn--ligth-blue {
+      width: 48%;
+      padding: 12px 40px;
+      border-radius: 3px;
+      margin-top: 20px;
+      background-color: map-get($map: $colors, $key: btnBlue);
+      @include font($size: 16px);
+
+      @include responsive-reverse(map-get($devices, tablet)) {
+        &:hover {
+          background-color: map-get($map: $colors, $key: white);
+          color: map-get($map: $colors, $key: primaryColor);
+        }
+      }
+    }
+  }
+
+  &__contact-list {
+    @include flex();
+    @include direction($direction: column);
+
+    li:not(:last-child) { margin-bottom: 50px; }
+
+    .footer-icon {
+      color: map-get($map: $colors, $key: white);
+      @include flex();
+      @include align($align: center);
+      @include font($size: 18px);
+      @include transition(all, .2s, ease-in-out);
+
+      @include responsive-reverse(map-get($devices, tablet)) {
+        &:hover {
+          color: map-get($map: $colors, $key: primaryColor);
+        }
+      }
+    }
+
+    .footer-icon::before {
+      margin-right: 25px;
+      font-family: "FontAwesome";
+      @include font($size: 37px);
+    }
+  }
+
+
+  &__Copyright {
+    width: 100%;
+    margin-top: 120px;
+    @include flex();
+    @include align($align: center);
+    @include justify($justify: center);
+
+    .para--white {
+      margin-top: 0;
+      @include font($size: 15px);
+      word-spacing: 2px;
+
+      a {
+        color: map-get($map: $colors, $key: white);
+        @include transition(all, .2s, ease-in-out);
+
+        @include responsive-reverse(map-get($devices, tablet)) {
+          &:hover {
+            color: map-get($map: $colors, $key: primaryColor);
+          }
+        }
+      }
+    }
+  }
+}

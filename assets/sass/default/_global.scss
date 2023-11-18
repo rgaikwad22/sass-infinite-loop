@@ -1,0 +1,155 @@
+// common styling starts here
+
+body {
+  overflow: hidden;
+  @include font($family: sans-serif);
+}
+
+a { 
+  display: inline-block;
+  text-decoration: none;
+}
+
+li { list-style-type: none; }
+
+.icon {
+  width: 13px;
+  height: 13px;
+  display: block;
+  position: relative;
+  color: map-get($map: $colors, $key: lightWhite);
+  text-indent: -9999px;
+}
+
+.icon:before,
+.icon::after {
+  display: block;
+  color: map-get($map: $colors, $key: secondaryColor);
+  text-indent: 0;
+  @include position($position: absolute, $top: 0, $left: 0);
+  @include transition(all, .2s, ease-in-out);
+  @include font($family: "FontAwesome");
+}
+
+.heading {
+  color: map-get($map: $colors, $key: lightBlack);
+  line-height: 60px;
+  text-transform: initial;
+  @include font($size: 44px);
+  
+  @include responsive(map-get($devices, tablet)){
+    line-height: 50px;
+    @include font($size: 40px);
+  }
+  
+  @include responsive(map-get($devices, extralargePhone)){
+    line-height: 40px;
+    @include font($size: 36px); 
+  }
+  
+  @include responsive(map-get($devices, largePhone)){
+    line-height: 30px;
+    @include font($size: 30px);
+  }
+
+  @include responsive(map-get($devices, mediumPhone)){
+    @include font($size: 26px);
+  }
+}
+
+.heading--blue { color: map-get($map: $colors, $key: btnBlue); }
+.heading--white { color: map-get($map: $colors, $key: white); }
+
+.btn {
+  padding: 15px 35px;
+  border: none;
+  color: map-get($map: $colors, $key: white);
+  white-space: nowrap;
+  @include transition(all, .3s, ease-in-out);
+}
+
+img { @include img($width: 100%, $height: 100%, $objFit: cover); }
+
+.head {
+  color: map-get($map: $colors, $key: lightBlack);
+  text-transform: capitalize;
+  @include font($size: 28px);
+
+  @include responsive(map-get($devices, tablet)) {
+    .head { @include font($size: 26px); }
+  }
+}
+
+.para {
+  margin-top: 20px;
+  color: map-get($map: $colors, $key: lightGrey);
+  line-height: 32px;
+  @include font($size: 18px);
+}
+
+.italic {
+  display: inline-block;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.para--grey { color: map-get($map: $colors, $key: textBrown); }
+.para--white { color: map-get($map: $colors, $key: white); }
+
+.highlight { 
+  color: map-get($map: $colors, $key: gallSlider); 
+  @include transition(all, .2s, ease-in-out);
+
+  @include responsive-reverse(map-get($devices, tablet)) {
+    &:hover {
+      color: map-get($map: $colors, $key: primaryColor);
+    }
+  }
+}
+.bold { @include font($weight: 700); }
+
+.slider {
+  width: 8.5%;
+  @include flex();
+  @include justify($justify: space-between);
+
+  li {
+    padding: 8px;
+    border-radius: 50%;
+    background-color: map-get($map: $colors, $key: lightdarkWhite);
+    cursor: pointer;
+    @include transition(all, .2s, ease-in-out);
+  }
+
+  li:not(:last-child) { margin-right: 6%; }
+}
+
+::placeholder {
+  color: map-get($map: $colors, $key: white);
+  @include font($size: 18px);
+}
+
+/*for wrapper*/
+.wrapper {
+  width: 91.26%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+@each $key, $value in $iconContent {
+  .icon-#{$key}::before {
+    content: $value;
+  }
+}
+
+// common styling ends here
+
+
+%form-inputs {
+  width: 87%;
+  padding: 15px 20px;
+  border: 1px solid map-get($map: $colors, $key: white);
+  background-color: map-get($map: $colors, $key: transparent);
+  border-radius: 7px;
+  outline: none ;
+}

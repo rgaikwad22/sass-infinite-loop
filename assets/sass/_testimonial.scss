@@ -1,0 +1,70 @@
+.testimonial-section {
+  min-height: 861px;
+  padding: 90px 0;
+  background-image: url('https://dummyimage.com/1366x861/3C4554/000');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .wrapper {
+    @include flex();
+    @include align($align: center);
+    @include direction($direction: column);
+  }
+
+  .heading--white { text-align: center; }
+  .para--white { 
+    width: 50%;
+    text-align: center;
+    @include font($size: 14px);
+  }
+
+  &__slider-list {
+    width: 78%;
+    margin-top: 70px;
+    @include flex();
+
+    li {
+      @include flex();
+      @include align($align: center);
+      @include direction($direction: column);
+      @include shortFlex(48%);
+
+      .para--slider {
+        margin-top: 40px;
+        color: map-get($map: $colors, $key: white);
+        @include font($size: 17px);
+      }
+
+      .figcaption {
+        width: 100%;
+        display: block;
+        color: map-get($map: $colors, $key: white);
+        text-align: end;
+        font-style: italic;
+      }
+    }
+
+    li:not(:last-child) { margin-right: 3%; }
+  }
+
+  &__fig {
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .slider--testimonials {
+    margin-top: 70px;
+    .active { background-color: map-get($map: $colors, $key: white); }
+
+    li {
+      @include responsive-reverse(map-get($devices, tablet)) {
+        &:hover {
+          background-color: map-get($map: $colors, $key: white);
+        }
+      }
+    }
+  }
+}
